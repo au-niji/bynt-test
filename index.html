@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+<title>DEMOレスポンシブでハンバーガーメニューになる固定サイドバー</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<header id="global-head">
+	<img src="./images/simple_logo.png">
+</header>
+
+<div id="nav-toggle">
+	<div>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+
+<aside id="sidebar">
+	<nav id="global-nav">
+		<ul>
+			<li><a href="./index.html">ホーム</a></li>
+			<li><a href="./shops.html">使える店舗</a></li>
+			<li><a href="./company.html">バイントについて</a></li>
+			<li><a href="#">新着情報</a></li>
+		</ul>
+	</nav>
+</aside>
+
+<main id="main">
+	<div id="main-in">
+		<div id="main-visual">
+			<h2>Fixed Sidebar</h2>
+		</div>
+
+		<section class="inner">
+			<div id="gmap"></div>
+			<h3>レスポンシブでハンバーガーメニューになる固定サイドバー</h3>
+			<p>マウスオーバーでサブメニューが開くタイプのサンプルです。</p>
+			<p>
+				このページの解説は下記をご覧ください。<br>
+				<a href="http://www.webopixel.net/javascript/1289.html">レスポンシブでハンバーガーメニューになる固定サイドバー</a>
+			</p>
+			<p id="copyright"><a href="http://www.webopixel.net">&copy; webopixel</a></p>
+		</section>
+	</div><!-- /#main-in -->
+</main>
+
+<div id="overlay"></div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script type="text/javascript">
+(function($) {
+    $(function () {
+        $('.sub-menu').on({
+            'mouseenter': function () {
+                $(this).addClass('is-active');
+            },
+            'mouseleave': function () {
+                $(this).removeClass('is-active');
+            }
+        });
+
+
+        $('#nav-toggle,#overlay').on('click', function() {
+            $('body').toggleClass('open');
+        });
+    });
+})(jQuery);
+</script>
+
+</body>
+</html>
