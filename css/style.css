@@ -314,6 +314,11 @@ h3 {
 
 /* Google Map */
 #map {
-	height: 400px;
-	width: 600px;
+	height: 87vh;
+	width: 100%;
+}
+
+#map2 {
+	height: 87vh;
+	width: 100%;
 }
