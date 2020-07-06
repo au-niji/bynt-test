@@ -6,9 +6,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <title>shoppage</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script type="text/javascript" src="./js/script.js"></script>
-    <!-- Google Map API -->
-    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyCA0iLuRNb-R4Uga5QqoisS8joUWGfkIIA&callback=initMap" async defer></script>
+    <!-- <script type="text/javascript" src="./js/script.js"></script> -->
+
+    <script src="https://unpkg.com/stein-js-client"></script>
+
+    <script>
+        // DBからデータを取得
+        async function readSpreadSheet() {
+            const store = new SteinStore(
+                "https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
+            );
+            var element = new Array();
+            await store.read("test", { limit: 100, offset: 0 }).then(data => {
+                console.dir(data);
+                console.log(" - - - - - - - - - - - ");
+                for (let i = 0; i < data.length; i++) {
+                    element.push(data[i]);
+                    console.log("title:" + element[i].name);
+                }
+            });
+            return element
+        }
+        // マーカーを設置
+        async function initMap() {
+            let element = await readSpreadSheet();
+            // 緯度・経度を変数に格納
+            var lat = parseFloat(element[0].lat);
+            var lng = parseFloat(element[0].lng);
+            var mapLatLng = new google.maps.LatLng(lat, lng);
+            console.log(mapLatLng)
+            // マップオプションを変数に格納
+            var mapOptions = {
+                zoom : 15,          // 拡大倍率
+                center : mapLatLng  // 緯度・経度
+            };
+            //マップオブジェクト作成
+            var map = new google.maps.Map(
+                document.getElementById("map"), // マップを表示する要素
+                mapOptions         // マップオプション
+            );
+            //　マップにマーカーを表示する
+            var marker = new google.maps.Marker({
+                map : map,             // 対象の地図オブジェクト
+                position : mapLatLng   // 緯度・経度
+            });
+        }
+        /*
+        // Geolocation APIに対応している
+        if (navigator.geolocation) {
+        // 現在地を取得
+        navigator.geolocation.getCurrentPosition(
+            // 取得成功した場合
+            function(position) {
+                // 緯度・経度を変数に格納
+                var lat = parseFloat(element[0].lat);
+                var lng = parseFloat(element[0].lng);
+                //var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                console.log(typeof(position.coords.latitude))
+                var mapLatLng = new google.maps.LatLng(lat, lng);
+                // マップオプションを変数に格納
+                var mapOptions = {
+                    zoom : 15,          // 拡大倍率
+                    center : mapLatLng  // 緯度・経度
+                };
+                // マップオブジェクト作成
+                var map = new google.maps.Map(
+                    document.getElementById("map"), // マップを表示する要素
+                    mapOptions         // マップオプション
+                );
+                //　マップにマーカーを表示する
+                var marker = new google.maps.Marker({
+                    map : map,             // 対象の地図オブジェクト
+                    position : mapLatLng   // 緯度・経度
+                });
+            },
+            // 取得失敗した場合
+            function(error) {
+            // エラーメッセージを表示
+                switch(error.code) {
+                    case 1: // PERMISSION_DENIED
+                    alert("位置情報の利用が許可されていません");
+                    break;
+                    case 2: // POSITION_UNAVAILABLE
+                    alert("現在位置が取得できませんでした");
+                    break;
+                    case 3: // TIMEOUT
+                    alert("タイムアウトになりました");
+                    break;
+                    default:
+                    alert("その他のエラー(エラーコード:"+error.code+")");
+                    break;
+                }
+            }
+        );
+        // Geolocation APIに対応していない
+        } else {
+            alert("この端末では位置情報が取得できません");
+        }
+        */
+    //}
+
+    // var promise = Promise.reject(new Error('promise!!!'));
+
+// これで抑制できる！！（後で見る人にとっては意味不明なのでコメントでこの記事のURLを貼っておこう）
+// promise.catch(function(e) {});
+
+// setTimeout(function() {promise.catch(/* 適切なエラーハンドル */);}, 1000);
+
+// なにもでない
+    </script>
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- CSS only -->
@@ -63,6 +170,14 @@
                 <h1>特集</h1>
             </div>
 
+            <div data-stein-url="https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586/'test'">
+                <div>
+                    <h3>{{id}}、{{name}},{{lat}}</h3>
+                </div>
+            </div>
+
+            <script src="https://unpkg.com/stein-expedite@0.0.1/dist/index.js"></script>
+
             <!-- モーダルの設定 -->
             <div class="modal fade" id="current-location" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog">
@@ -105,6 +220,10 @@
 
 <div id="overlay"></div>
 
+<iframe src="https://drive.google.com/viewerng/viewer?url=http://docs.google.com/fileview?id=0B5ImRpiNhCfGZDVhMGEyYmUtZTdmMy00YWEyLWEyMTQtN2E2YzM3MDg3MTZh&hl=en&pid=explorer&efh=false&a=v&chrome=false&embedded=true" frameborder="0" width="500px" height="100vh"></iframe>
+<!-- Stainとの連携 -->
+<script src="https://unpkg.com/stein-js-client"></script>
+
 <script type="text/javascript">
 (function($) {
     $(function () {
@@ -123,6 +242,9 @@
     });
 })(jQuery);
 </script>
+
+<!-- Google Map API -->
+<script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyBh44mEO1UXp6gD88rlgLY7ktH8zbFuU64&callback=initMap" async defer></script>
 
 </body>
 </html>

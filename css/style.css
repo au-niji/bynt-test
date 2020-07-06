@@ -14,7 +14,7 @@ html,body {
 }
 body {
 	font-size: 14px;
-	font-family: 'Lato', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+	font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
 	background: #eee;
 	-webkit-text-size-adjust: 100%;
 }

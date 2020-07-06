@@ -1,79 +1,134 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-<title>testpage</title>
-<link rel="stylesheet" type="text/css" href="./css/style.css">
-</head>
-<body>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>株式会社バイント</title>
+		<script src="./js/sidebar.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/home.css">
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- CSS only -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<!-- JS, Popper.js, and jQuery -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	</head>
+	<body>
 
-<header id="global-head">
-	<img src="./images/simple_logo.png">
-</header>
+	<header id="global-head">
+		<img src="./images/simple_logo.png">
+	</header>
 
-<div id="nav-toggle">
-	<div>
-		<span></span>
-		<span></span>
-		<span></span>
-	</div>
-</div>
-
-<aside id="sidebar">
-	<nav id="global-nav">
-		<ul>
-			<li><a href="./index.html">ホーム</a></li>
-			<li><a href="./shops.html">使える店舗</a></li>
-			<li><a href="./company.html">バイントについて</a></li>
-			<li><a href="#">新着情報</a></li>
-		</ul>
-	</nav>
-</aside>
-
-<main id="main">
-	<div id="main-in">
-		<div id="main-visual">
-			<h2>Fixed Sidebar</h2>
+	<div id="nav-toggle">
+		<div>
+			<span></span>
+			<span></span>
+			<span></span>
 		</div>
+	</div>
 
-		<section class="inner">
-			<div id="gmap"></div>
-			<h3>レスポンシブでハンバーガーメニューになる固定サイドバー</h3>
-			<p>マウスオーバーでサブメニューが開くタイプのサンプルです。</p>
-			<p>
-				このページの解説は下記をご覧ください。<br>
-				<a href="http://www.webopixel.net/javascript/1289.html">レスポンシブでハンバーガーメニューになる固定サイドバー</a>
-			</p>
-			<p id="copyright"><a href="http://www.webopixel.net">&copy; webopixel</a></p>
-		</section>
-	</div><!-- /#main-in -->
-</main>
+	<aside id="sidebar">
+		<nav id="global-nav">
+			<ul>
+				<li><a href="./index.html">ホーム</a></li>
+				<li><a href="./shops.html">使える店舗</a></li>
+				<li><a href="./company.html">バイントについて</a></li>
+				<li><a href="#">新着情報</a></li>
+			</ul>
+		</nav>
+	</aside>
 
-<div id="overlay"></div>
+	<main id="main">
+		<div id="main-in">
 
+			<section class="section">
+				<div class="section-top font-weight-bold">
+					<img src="./images/home_top.png" class="img-fluid">
+					<p class="h1">テクノロジーの力で
+						<br/>生活をより豊かに
+					</p>
+				</div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-<script type="text/javascript">
-(function($) {
-    $(function () {
-        $('.sub-menu').on({
-            'mouseenter': function () {
-                $(this).addClass('is-active');
-            },
-            'mouseleave': function () {
-                $(this).removeClass('is-active');
-            }
-        });
+				<div class="section-what-bynt">
+					<h3><span class="sub-title">BYNT</span>って何？</h3>
+					<img src="./images/home_what_bynt.png">
+					<div class="font-weight-bold">
+						<p>日本初！アルバイト向け福利厚生サービスです。</p>
+						<br/>
+						<p>使えるお金が1.3倍に増えることで
+						<br/>いつものライフスタイルから新しい日常体験を！</p>
+						<br/>
+						<p><span class="text-color-orange">"アルバイトの可能性を最大限に"</span>
+						<br/>をモットーに新たな常識を作り出します</p>
+					</div>
+				</div>
 
+				<br/>
 
-        $('#nav-toggle,#overlay').on('click', function() {
-            $('body').toggleClass('open');
-        });
-    });
-})(jQuery);
-</script>
+				<div class="container">
+					<h3><span class="sub-title">BYNT</span>の特徴</h3>
+					<div class="row font-weight-bold">
+						<div class="col-lg" style="text-align: center;">
+							<img src="./images/home_future1.png">
+							<p>使えるお金が<span class="text-color-red">30％</span>増える</p>
+							<br/>
+							<p>購入金額の1.3倍分のチケットを発行！
+								<br/>通常より<span class="text-color-red">多くの体験</span>を受けることが可能に。
+								<br/>使えるお金を増やす新たな手段を実現しました。
+							</p>
+						</div>
+						<div class="col-lg" style="text-align: center;">
+							<img src="./images/home_future2.png">
+							<p>自由な時間が増える</p>
+							<br/>
+							<p>これまでアルバイトに費やしていた時間を
+								<br/>自由な時間に変えることも可能になります。
+								<br/>日常により多くの<span class="text-color-red">ワクワク</span>を！
+							</p>
+						</div>
+					</div>
+				</div>
 
-</body>
+				<br/>
+
+				<div class="container">
+					<h3><span class="sub-title">BYNT</span>の使い方</h3>
+					<div class="row font-weight-bold">
+						<div class="col-lg" style="text-align: center;">
+							<img src="./images/home_usage1.png">
+							<p class="usage-sub-ttile">店舗にてチケットを購入</p>
+							<p>アルバイト先で<span class="text-color-red">1000円/1枚</span>から
+								<br/>チケットを購入できます。
+								<br/>購入上限はありません。
+							</p>
+						</div>
+						<div class="col-lg" style="text-align: center;">
+							<img src="./images/home_usage2.png">
+							<p class="usage-sub-ttile">使用できる店舗を確認</p>
+							<p>「使える店舗」から加盟店をチェックし
+								<br/>行きたい店舗を見つけます。
+							</p>
+						</div>
+						<div class="col-lg" style="text-align: center;">
+							<img src="./images/home_usage3.png">
+							<p class="usage-sub-ttile">チケットを持って、訪問</p>
+							<p>加盟店に訪問し、お支払い時に
+								<br/>バイントチケットを渡す。
+								<br/>記載された金額で決済できます。
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</div><!-- /#main-in -->
+	</main>
+
+	<div id="overlay"></div>
+
+	</body>
 </html>
