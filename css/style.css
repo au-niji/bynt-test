@@ -15,12 +15,12 @@ html,body {
 body {
 	font-size: 14px;
 	font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
-	background: #eee;
+	background: #FFFFFF;
 	-webkit-text-size-adjust: 100%;
 }
 
 #main {
-	background: #eee;
+	background: #FFFFFF;
 }
 #main-in {
 	padding-left: 260px;
