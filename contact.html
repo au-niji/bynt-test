@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+		<title>株式会社バイント</title>
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/home.css">
+		<!-- jQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="./js/sidebar.js"></script>
+		<!-- CSS only -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<!-- JS, Popper.js, and jQuery -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	</head>
+	<body>
+
+	<header id="global-head">
+		<img src="./images/simple_logo.png">
+	</header>
+
+	<div id="nav-toggle">
+		<div>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+
+	<aside id="sidebar">
+		<nav id="global-nav">
+			<ul>
+				<li><a href="./index.html">ホーム</a></li>
+				<li><a href="./shops.html">使える店舗</a></li>
+				<li><a href="./company.html">バイントについて</a></li>
+				<li><a href="./news.html">新着情報</a></li>
+			</ul>
+		</nav>
+	</aside>
+
+	<main id="main">
+		<div id="main-in">
+
+			<section class="section">
+				<div class="section-top font-weight-bold">
+					<p class="h1">お問い合わせ</p>
+				</div>
+
+				<br/>
+
+				<form>
+                    <div class="form-row">
+                        <label for="validationServer01">名字</label>
+                        <input type="text" class="form-control is-valid" id="validationServer01" value="ブート" required>
+                        <label for="validationServer02">名前</label>
+                        <input type="text" class="form-control is-valid" id="validationServer02" value="太郎" required>
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-3 mb-3">
+                        <label for="validationServer03">郵便番号</label>
+                        <input type="text" class="form-control is-invalid" id="validationServer03" required>
+                        <div class="invalid-feedback">
+                          有効な郵便番号を入力してください
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="validationServer04">都道府県</label>
+                        <select class="custom-select is-invalid" id="validationServer04" required>
+                          <option selected disabled value="">選択...</option>
+                          <option>...</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          有効な都道府県を選択してください
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="validationServer05">住所</label>
+                        <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="住所" required>
+                        <div class="invalid-feedback">
+                          有効な住所を入力してください
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                        <label class="form-check-label" for="invalidCheck3">
+                          利用規約に同意する
+                        </label>
+                        <div class="invalid-feedback">
+                          提出する前に同意する必要があります
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">フォームを送信</button>
+                  </form>
+
+				<br/>
+
+			</section>
+		</div><!-- /#main-in -->
+	</main>
+
+	<div id="overlay"></div>
+
+	<footer>
+		<div class="container">
+		  <div class="row">
+
+				   <div class="col-md-4 col-sm-6 col-xs-12">
+						<span class="logo">B Y N T</span>
+				   </div>
+
+				   <div class="col-md-8 col-sm-6 col-xs-12">
+					   <ul class="menu">
+							<span>Menu</span>
+							<li>
+							   <a href="./contact.html">お問い合わせ</a>
+							 </li>
+							 <li>
+								<a href="./privacy.html">プライバシーポリシー</a>
+							 </li>
+							 <li>
+							   <a href="#">利用規約</a>
+							 </li>
+							 <li>
+								<a href="#">企業概要</a>
+							 </li>
+						</ul>
+				   </div>
+
+				   <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+					 <ul class="address">
+						   <span>Contact</span>
+						   <li>
+							  <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">Phone</a>
+						   </li>
+						   <li>
+							  <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Adress</a>
+						   </li>
+						   <li>
+							  <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">Email</a>
+						   </li>
+					  </ul>
+				  </div> -->
+
+			  </div>
+		   </div>
+	   </footer>
+
+	</body>
+</html>
