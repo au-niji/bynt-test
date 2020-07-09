@@ -46,60 +46,42 @@
 		<div id="main-in">
 
 			<section class="section">
-				<div class="section-top font-weight-bold">
-					<p class="h1">お問い合わせ</p>
-				</div>
+				<div class="title">
+					<p class="h1 font-weight-bold">会社概要</p>
+                </div>
 
-				<br/>
-
-				<form>
-                    <div class="form-row">
-                        <label for="validationServer01">名字</label>
-                        <input type="text" class="form-control is-valid" id="validationServer01" value="ブート" required>
-                        <label for="validationServer02">名前</label>
-                        <input type="text" class="form-control is-valid" id="validationServer02" value="太郎" required>
-                    </div>
-                    <div class="form-row">
-                      <div class="col-md-3 mb-3">
-                        <label for="validationServer03">郵便番号</label>
-                        <input type="text" class="form-control is-invalid" id="validationServer03" required>
-                        <div class="invalid-feedback">
-                          有効な郵便番号を入力してください
-                        </div>
-                      </div>
-                      <div class="col-md-3 mb-3">
-                        <label for="validationServer04">都道府県</label>
-                        <select class="custom-select is-invalid" id="validationServer04" required>
-                          <option selected disabled value="">選択...</option>
-                          <option>...</option>
-                        </select>
-                        <div class="invalid-feedback">
-                          有効な都道府県を選択してください
-                        </div>
-                      </div>
-                      <div class="col-md-6 mb-3">
-                        <label for="validationServer05">住所</label>
-                        <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="住所" required>
-                        <div class="invalid-feedback">
-                          有効な住所を入力してください
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="form-check">
-                        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-                        <label class="form-check-label" for="invalidCheck3">
-                          利用規約に同意する
-                        </label>
-                        <div class="invalid-feedback">
-                          提出する前に同意する必要があります
-                        </div>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">フォームを送信</button>
-                  </form>
-
-				<br/>
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">会社名</th>
+                        <td>株式会社バイント/BYNT inc.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">代表取締役</th>
+                        <td>田垣内　啓介</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">資本金</th>
+                        <td>1百万円</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">設立年月日</th>
+                        <td>2020年4月24日</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">事業内容</th>
+                        <td>Fintechに関する事業、HR Techに関する事業、有料職業紹介に関する事業</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">顧問弁護士</th>
+                        <td>上遠野　友晶（やまと総合法律事務所）</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">所在地</th>
+                        <td>〒170-0005 東京都豊島区南大塚2-11-10　ミモザビル3F</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
 			</section>
 		</div><!-- /#main-in -->
@@ -150,7 +132,14 @@
 
 			  </div>
 		   </div>
-	   </footer>
+       </footer>
 
+       <style>
+           @media screen and (max-width: 768px) {
+                tbody {
+                    font-size: 11px;
+                }
+            }
+       </style>
 	</body>
 </html>
