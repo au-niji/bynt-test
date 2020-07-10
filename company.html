@@ -56,7 +56,8 @@
 				<div class="container">
 					<div class="row font-weight-bold">
 						<div class="company-bynt col-lg" style="text-align: center;">
-                            <img src="./images/logo.png" style="width: 100%;">
+							<img src="./images/logo.png" style="width: 80%; margin-bottom: 10px;">
+							<img class="phone" src="./images/company_part.jpg" style="width: 80%;">
                         </div>
                         <div class="col-lg company-text" style="text-align: center;">
                             <br/>
@@ -84,8 +85,7 @@
                             <p>
                                 こういう快適が、案外、身近な未来って気がしません？
                                 <br/>さぁ、アルバイトの可能性を前進させよう。
-                            </p>
-
+							</p>
 						</div>
 					</div>
 				</div>
@@ -171,12 +171,17 @@
 			}
 
 			.company-bynt {
-				display: inline-block; 
-				 margin-top: 15%;
+				display: inline-block;
 			}
 
 			.company-text {
 				font-size: 13px
+			}
+
+			@media screen and (max-width: 768px) {
+				.phone {
+					display:none;
+				}
 			}
 		</style>
 	</body>
