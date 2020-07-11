@@ -25,6 +25,8 @@
                     console.log("title:" + element[i].name);
                 }
             });
+            var json = JSON.stringify(element);
+            console.log(json)
             return element
         }
         var map;
@@ -33,6 +35,7 @@
         // マーカーを設置
         async function initMap() {
             let data = await readSpreadSheet();
+            /*
             // 緯度・経度を変数に格納
             var lat = parseFloat(data[0].lat);
             var lng = parseFloat(data[0].lng);
@@ -48,49 +51,18 @@
                 document.getElementById("map"), // マップを表示する要素
                 mapOptions         // マップオプション
             );
-            //　マップにマーカーを表示する
-            // var marker = new google.maps.Marker({
-            //     map : map,             // 対象の地図オブジェクト
-            //     position : mapLatLng   // 緯度・経度
-            // });
-            // infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
-            //     content: '<a href="element[0].url">element[0].name</a>' // 吹き出しに表示する内容
-            // });
-            // marker.addListener('click', function() { // マーカーをクリックしたとき
-            //     infoWindow.open(map, marker); // 吹き出しの表示
-            // });
-            //マーカーを配置するループ
-            for (i = 0; i < data.length; i++) {
-                marker[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(data[i].lat, data[i].lng),
-                    map: map
-                });
-                infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-                    content: "<a href=" + data[i].url + ">" + data[i].name + "</a>" // 吹き出しに表示する内容
-                });
-                markerEvent(i);
-            }
-        }
-
-        function markerEvent(i) {
-            marker[i].addListener('click', function() { // マーカーをクリックしたとき
-                infoWindow[i].open(map, marker[i]); // 吹き出しの表示
-            });
-        }
-
-        /*
-        // Geolocation APIに対応している
+            */
+                    // Geolocation APIに対応している
         if (navigator.geolocation) {
         // 現在地を取得
         navigator.geolocation.getCurrentPosition(
             // 取得成功した場合
             function(position) {
                 // 緯度・経度を変数に格納
-                var lat = parseFloat(element[0].lat);
-                var lng = parseFloat(element[0].lng);
-                //var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                console.log(typeof(position.coords.latitude))
-                var mapLatLng = new google.maps.LatLng(lat, lng);
+                // var lat = parseFloat(data[0].lat);
+                // var lng = parseFloat(data[0].lng);
+                var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                // var mapLatLng = new google.maps.LatLng(lat, lng);
                 // マップオプションを変数に格納
                 var mapOptions = {
                     zoom : 15,          // 拡大倍率
@@ -102,11 +74,22 @@
                     mapOptions         // マップオプション
                 );
                 //　マップにマーカーを表示する
-                var marker = new google.maps.Marker({
-                    map : map,             // 対象の地図オブジェクト
-                    position : mapLatLng   // 緯度・経度
-                });
-            },
+                // var marker = new google.maps.Marker({
+                //     map : map,             // 対象の地図オブジェクト
+                //     position : mapLatLng   // 緯度・経度
+                // });
+                //マーカーを配置するループ
+                for (i = 0; i < data.length; i++) {
+                    marker[i] = new google.maps.Marker({
+                        position: new google.maps.LatLng(data[i].lat, data[i].lng),
+                        map: map
+                    });
+                    infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+                        content: "<a href=" + data[i].url + ">" + data[i].name + "</a>" // 吹き出しに表示する内容
+                    });
+                    markerEvent(i);
+                }
+                },
             // 取得失敗した場合
             function(error) {
             // エラーメッセージを表示
@@ -130,17 +113,27 @@
         } else {
             alert("この端末では位置情報が取得できません");
         }
-        */
-    //}
 
-    // var promise = Promise.reject(new Error('promise!!!'));
+            //マーカーを配置するループ
+            for (i = 0; i < data.length; i++) {
+                marker[i] = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i].lat, data[i].lng),
+                    map: map
+                });
+                infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+                    content: "<a href=" + data[i].url + ">" + data[i].name + "</a>" // 吹き出しに表示する内容
+                });
+                markerEvent(i);
+            }
+        }
 
-// これで抑制できる！！（後で見る人にとっては意味不明なのでコメントでこの記事のURLを貼っておこう）
-// promise.catch(function(e) {});
+        function markerEvent(i) {
+            marker[i].addListener('click', function() { // マーカーをクリックしたとき
+                infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+            });
+        }
 
-// setTimeout(function() {promise.catch(/* 適切なエラーハンドル */);}, 1000);
 
-// なにもでない
     </script>
 
     <!-- jQuery -->
@@ -171,7 +164,7 @@
 	<nav id="global-nav">
 		<ul>
             <li><a href="./index.html">ホーム</a></li>
-            <li><a href="./shops.html">使える店舗</a></li>
+            <li><a href="./shops.html">使えるお店</a></li>
             <li><a href="./company.html">バイントについて</a></li>
             <li><a href="./news.html">新着情報</a></li>
 		</ul>
@@ -181,19 +174,18 @@
 <main id="main">
 	<div id="main-in">
 		<section class="shop-inner">
-            <h1 class="title">使える店舗</h1>
+            <h1 class="title">使えるお店</h1>
             <h1>お店を探す</h1>
             <div class="search-wrapper">
-                <img src="./images/shop_genre.png" data-toggle="modal" data-target="#category-list">
-                <img src="./images/shop_here.png" data-toggle="modal" data-target="#current-location">
-                <!-- <div class="search-icon">
-                    <input type="image" src="./images/location-arrow-solid.svg" data-toggle="modal" data-target="#current-location" width="60" height="60">
-                    <p>現在地から</p>
+                <!-- <img src="./images/shop_genre.png" data-toggle="modal" data-target="#category-list"> -->
+                <div class="search-icon">
+                    <a href="./search.html"><img src="./images/shop_genre.png" style="width: 50%;"></a>
+                    <p><span class="search-sub">ジャンル</span>から探す</p>
                 </div>
                 <div class="search-icon">
-                    <input type="image" src="./images/utensils-solid.svg" data-toggle="modal" data-target="#category-list" width="60" height="60">
-                    <p>ジャンル・エリア</p>
-                </div> -->
+                    <img src="./images/shop_here.png" style="width: 50%;" data-toggle="modal" data-target="#current-location">
+                    <p><span class="search-sub">現在地</span>から探す</p>
+                </div>
             </div>
 
             <div class="special-content">
@@ -201,9 +193,6 @@
             </div>
 
             <div data-stein-url="https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586/'test'">
-                <div>
-                    <h3>{{id}}、{{name}},{{lat}}</h3>
-                </div>
             </div>
 
             <script src="https://unpkg.com/stein-expedite@0.0.1/dist/index.js"></script>

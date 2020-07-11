@@ -10,7 +10,10 @@ h1 {
     text-align: center;
     display: flex;
     justify-content: center;
+    position: relative;
     /* justify-content: space-around; */
+    align-items: flex-end;
+    position: relative;
 }
 .shop-inner {
     padding-top: 60px;
@@ -21,8 +24,8 @@ h1 {
     display: inline-block;
     padding: 0.5em 1em;
     font-weight: bold;
-    background: #FFF;
-    border: solid 1px #6091d3;
+    background: #FFFFE0;
+    border: solid 1.5px #EEEEEE;
     border-radius: 10px;
     margin: 5px;
 }
@@ -31,4 +34,10 @@ h1 {
     bottom: 0;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
+}
+
+.search-sub {
+    font-size: 19px;
+    font-weight: bold;
 }
