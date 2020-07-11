@@ -27,12 +27,15 @@
             });
             return element
         }
+        var map;
+        var marker = [];
+        var infoWindow = [];
         // マーカーを設置
         async function initMap() {
-            let element = await readSpreadSheet();
+            let data = await readSpreadSheet();
             // 緯度・経度を変数に格納
-            var lat = parseFloat(element[0].lat);
-            var lng = parseFloat(element[0].lng);
+            var lat = parseFloat(data[0].lat);
+            var lng = parseFloat(data[0].lng);
             var mapLatLng = new google.maps.LatLng(lat, lng);
             console.log(mapLatLng)
             // マップオプションを変数に格納
@@ -41,16 +44,40 @@
                 center : mapLatLng  // 緯度・経度
             };
             //マップオブジェクト作成
-            var map = new google.maps.Map(
+            map = new google.maps.Map(
                 document.getElementById("map"), // マップを表示する要素
                 mapOptions         // マップオプション
             );
             //　マップにマーカーを表示する
-            var marker = new google.maps.Marker({
-                map : map,             // 対象の地図オブジェクト
-                position : mapLatLng   // 緯度・経度
+            // var marker = new google.maps.Marker({
+            //     map : map,             // 対象の地図オブジェクト
+            //     position : mapLatLng   // 緯度・経度
+            // });
+            // infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+            //     content: '<a href="element[0].url">element[0].name</a>' // 吹き出しに表示する内容
+            // });
+            // marker.addListener('click', function() { // マーカーをクリックしたとき
+            //     infoWindow.open(map, marker); // 吹き出しの表示
+            // });
+            //マーカーを配置するループ
+            for (i = 0; i < data.length; i++) {
+                marker[i] = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i].lat, data[i].lng),
+                    map: map
+                });
+                infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+                    content: "<a href=" + data[i].url + ">" + data[i].name + "</a>" // 吹き出しに表示する内容
+                });
+                markerEvent(i);
+            }
+        }
+
+        function markerEvent(i) {
+            marker[i].addListener('click', function() { // マーカーをクリックしたとき
+                infoWindow[i].open(map, marker[i]); // 吹き出しの表示
             });
         }
+
         /*
         // Geolocation APIに対応している
         if (navigator.geolocation) {
@@ -154,16 +181,19 @@
 <main id="main">
 	<div id="main-in">
 		<section class="shop-inner">
+            <h1 class="title">使える店舗</h1>
             <h1>お店を探す</h1>
             <div class="search-wrapper">
-                <div class="search-icon">
+                <img src="./images/shop_genre.png" data-toggle="modal" data-target="#category-list">
+                <img src="./images/shop_here.png" data-toggle="modal" data-target="#current-location">
+                <!-- <div class="search-icon">
                     <input type="image" src="./images/location-arrow-solid.svg" data-toggle="modal" data-target="#current-location" width="60" height="60">
                     <p>現在地から</p>
                 </div>
                 <div class="search-icon">
                     <input type="image" src="./images/utensils-solid.svg" data-toggle="modal" data-target="#category-list" width="60" height="60">
                     <p>ジャンル・エリア</p>
-                </div>
+                </div> -->
             </div>
 
             <div class="special-content">
@@ -220,7 +250,55 @@
 
 <div id="overlay"></div>
 
-<iframe src="https://drive.google.com/viewerng/viewer?url=http://docs.google.com/fileview?id=0B5ImRpiNhCfGZDVhMGEyYmUtZTdmMy00YWEyLWEyMTQtN2E2YzM3MDg3MTZh&hl=en&pid=explorer&efh=false&a=v&chrome=false&embedded=true" frameborder="0" width="500px" height="100vh"></iframe>
+<footer>
+    <div class="container">
+      <div class="row">
+
+               <div class="col-md-4 col-sm-6 col-xs-12">
+                    <span class="logo">B Y N T</span>
+               </div>
+
+               <div class="col-md-8 col-sm-6 col-xs-12">
+                <ul class="menu">
+                     <span>Menu</span>
+                     <li>
+                        <p>お問い合わせ</p>
+                        <ol>
+                            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScVTY_dKx0mj50IAC--dDKvq-1t4FSdpaqpU8Ob4fuQ8zP9Xw/viewform?usp=sf_link">加盟店様</a></li>
+                            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScpe2Vz5SKwelc_H6WnIMn_BZZpPM2wwwHYJ8w02aXR07L5cw/viewform?usp=sf_link">利用者様</a></li>
+                        </ol>
+                      </li>
+                      <li>
+                         <a href="./privacy.html">プライバシーポリシー</a>
+                      </li>
+                      <li>
+                        <a href="./terms.html">利用規約</a>
+                      </li>
+                      <li>
+                         <a href="./profile.html">企業概要</a>
+                      </li>
+                 </ul>
+            </div>
+
+               <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+                 <ul class="address">
+                       <span>Contact</span>
+                       <li>
+                          <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">Phone</a>
+                       </li>
+                       <li>
+                          <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Adress</a>
+                       </li>
+                       <li>
+                          <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">Email</a>
+                       </li>
+                  </ul>
+              </div> -->
+
+          </div>
+       </div>
+   </footer>
+
 <!-- Stainとの連携 -->
 <script src="https://unpkg.com/stein-js-client"></script>
 
