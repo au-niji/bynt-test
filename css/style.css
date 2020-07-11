@@ -414,3 +414,9 @@ footer{
 	font-size:11px;
 	text-align: left;
 }
+
+.menu ol li{
+	color: #FFFFFF;
+	font-size: 10px;
+	text-indent: 3em;
+}
