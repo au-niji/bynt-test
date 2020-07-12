@@ -11,6 +11,12 @@
     <script src="https://unpkg.com/stein-js-client"></script>
 
     <script>
+        function markerEvent(i) {
+            marker[i].addListener('click', function() { // マーカーをクリックしたとき
+                infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+            });
+        }
+
         // DBからデータを取得
         async function readSpreadSheet() {
             const store = new SteinStore(
@@ -35,34 +41,9 @@
         // マーカーを設置
         async function initMap() {
             let data = await readSpreadSheet();
-            /*
-            // 緯度・経度を変数に格納
-            var lat = parseFloat(data[0].lat);
-            var lng = parseFloat(data[0].lng);
-            var mapLatLng = new google.maps.LatLng(lat, lng);
-            console.log(mapLatLng)
-            // マップオプションを変数に格納
-            var mapOptions = {
-                zoom : 15,          // 拡大倍率
-                center : mapLatLng  // 緯度・経度
-            };
-            //マップオブジェクト作成
-            map = new google.maps.Map(
-                document.getElementById("map"), // マップを表示する要素
-                mapOptions         // マップオプション
-            );
-            */
-                    // Geolocation APIに対応している
-        if (navigator.geolocation) {
-        // 現在地を取得
-        navigator.geolocation.getCurrentPosition(
-            // 取得成功した場合
-            function(position) {
-                // 緯度・経度を変数に格納
-                // var lat = parseFloat(data[0].lat);
-                // var lng = parseFloat(data[0].lng);
-                var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                // var mapLatLng = new google.maps.LatLng(lat, lng);
+                            // 緯度・経度を変数に格納
+                // var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var mapLatLng = new google.maps.LatLng(35.7295, 139.7109);
                 // マップオプションを変数に格納
                 var mapOptions = {
                     zoom : 15,          // 拡大倍率
@@ -73,11 +54,6 @@
                     document.getElementById("map"), // マップを表示する要素
                     mapOptions         // マップオプション
                 );
-                //　マップにマーカーを表示する
-                // var marker = new google.maps.Marker({
-                //     map : map,             // 対象の地図オブジェクト
-                //     position : mapLatLng   // 緯度・経度
-                // });
                 //マーカーを配置するループ
                 for (i = 0; i < data.length; i++) {
                     marker[i] = new google.maps.Marker({
@@ -89,50 +65,62 @@
                     });
                     markerEvent(i);
                 }
-                },
-            // 取得失敗した場合
-            function(error) {
-            // エラーメッセージを表示
-                switch(error.code) {
-                    case 1: // PERMISSION_DENIED
-                    alert("位置情報の利用が許可されていません");
-                    break;
-                    case 2: // POSITION_UNAVAILABLE
-                    alert("現在位置が取得できませんでした");
-                    break;
-                    case 3: // TIMEOUT
-                    alert("タイムアウトになりました");
-                    break;
-                    default:
-                    alert("その他のエラー(エラーコード:"+error.code+")");
-                    break;
-                }
-            }
-        );
-        // Geolocation APIに対応していない
-        } else {
-            alert("この端末では位置情報が取得できません");
-        }
 
-            //マーカーを配置するループ
-            for (i = 0; i < data.length; i++) {
-                marker[i] = new google.maps.Marker({
-                    position: new google.maps.LatLng(data[i].lat, data[i].lng),
-                    map: map
-                });
-                infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-                    content: "<a href=" + data[i].url + ">" + data[i].name + "</a>" // 吹き出しに表示する内容
-                });
-                markerEvent(i);
-            }
-        }
+        // if (navigator.geolocation) {
+        // // 現在地を取得
+        // navigator.geolocation.getCurrentPosition(
+        //     // 取得成功した場合
+        //     function(position) {
+        //         // 緯度・経度を変数に格納
+        //         // var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        //         var mapLatLng = new google.maps.LatLng(35.7295, 139.7109);
+        //         // マップオプションを変数に格納
+        //         var mapOptions = {
+        //             zoom : 15,          // 拡大倍率
+        //             center : mapLatLng  // 緯度・経度
+        //         };
+        //         // マップオブジェクト作成
+        //         var map = new google.maps.Map(
+        //             document.getElementById("map"), // マップを表示する要素
+        //             mapOptions         // マップオプション
+        //         );
+        //         //マーカーを配置するループ
+        //         for (i = 0; i < data.length; i++) {
+        //             marker[i] = new google.maps.Marker({
+        //                 position: new google.maps.LatLng(data[i].lat, data[i].lng),
+        //                 map: map
+        //             });
+        //             infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+        //                 content: "<a href=" + data[i].url + ">" + data[i].name + "</a>" // 吹き出しに表示する内容
+        //             });
+        //             markerEvent(i);
+        //         }
+        //         },
+        //     // 取得失敗した場合
+        //     function(error) {
+        //     // エラーメッセージを表示
+        //         switch(error.code) {
+        //             case 1: // PERMISSION_DENIED
+        //             alert("位置情報の利用が許可されていません");
+        //             break;
+        //             case 2: // POSITION_UNAVAILABLE
+        //             alert("現在位置が取得できませんでした");
+        //             break;
+        //             case 3: // TIMEOUT
+        //             alert("タイムアウトになりました");
+        //             break;
+        //             default:
+        //             alert("その他のエラー(エラーコード:"+error.code+")");
+        //             break;
+        //         }
+        //     }
+        // );
+        // // Geolocation APIに対応していない
+        // } else {
+        //     alert("この端末では位置情報が取得できません");
+        // }
 
-        function markerEvent(i) {
-            marker[i].addListener('click', function() { // マーカーをクリックしたとき
-                infoWindow[i].open(map, marker[i]); // 吹き出しの表示
-            });
         }
-
 
     </script>
 
@@ -184,7 +172,7 @@
                 </div>
                 <div class="search-icon">
                     <img src="./images/shop_here.png" style="width: 50%;" data-toggle="modal" data-target="#current-location">
-                    <p><span class="search-sub">現在地</span>から探す</p>
+                    <p><span class="search-sub">地図</span>から探す</p>
                 </div>
             </div>
 
