@@ -9,7 +9,6 @@
     <!-- <script type="text/javascript" src="./js/script.js"></script> -->
 
     <script src="https://unpkg.com/stein-js-client"></script>
-
     <script>
         function markerEvent(i) {
             marker[i].addListener('click', function() { // マーカーをクリックしたとき
@@ -17,22 +16,38 @@
             });
         }
 
-        // DBからデータを取得
-        async function readSpreadSheet() {
+        async function setSpecialContets(data) {
+            var specitalContainer = document.getElementById("special-container");
+            for (let i = 0; i < data.length; i++) {
+                var content =
+                    '<div class="special-content"> \
+                        <a href=' + data[i].link + ' class="d-flex flex-row">\
+                            <h3 class="p-2 bd-highlight">' + data[i].title + '</h3>\
+                                <img style="width: 30%;" class="p-2 bd-highlight" src=' + data[i].image + '>\
+                        </a>\
+                    </div>'
+                specitalContainer.innerHTML += content;
+            }
+        }
+        // DBから特集用のデータを取得
+        // DBからGoogle Map用のデータを取得
+        async function readSpreadSheetMapData() {
             const store = new SteinStore(
                 "https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
             );
             var element = new Array();
             await store.read("test", { limit: 100, offset: 0 }).then(data => {
-                console.dir(data);
-                console.log(" - - - - - - - - - - - ");
                 for (let i = 0; i < data.length; i++) {
                     element.push(data[i]);
-                    console.log("title:" + element[i].name);
                 }
             });
-            var json = JSON.stringify(element);
-            console.log(json)
+            store.read("special", { limit: 100, offset: 0 }).then(data => {
+                var specialData = new Array();
+                for (let i = 0; i < data.length; i++) {
+                        specialData.push(data[i]);
+                }
+                setSpecialContets(specialData);
+            });
             return element
         }
         var map;
@@ -40,8 +55,8 @@
         var infoWindow = [];
         // マーカーを設置
         async function initMap() {
-            let data = await readSpreadSheet();
-                            // 緯度・経度を変数に格納
+            let data = await readSpreadSheetMapData();
+                // 緯度・経度を変数に格納
                 // var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var mapLatLng = new google.maps.LatLng(35.7295, 139.7109);
                 // マップオプションを変数に格納
@@ -119,11 +134,8 @@
         // } else {
         //     alert("この端末では位置情報が取得できません");
         // }
-
-        }
-
+    }
     </script>
-
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- CSS only -->
@@ -176,8 +188,10 @@
                 </div>
             </div>
 
-            <div class="special-content">
+            <div class="special">
                 <h1>特集</h1>
+                <div id="special-container">
+                </div>
             </div>
 
             <div data-stein-url="https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586/'test'">
