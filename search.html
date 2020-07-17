@@ -28,63 +28,82 @@
 					"https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
 				);
 
-				await store.read("test", { limit: 100, offset: 0 }).then(data => {
+				await store.read("test", { offset: 0 }).then(data => {
 					shopData = data;
 				});
-				setGenreModal();
+				console.log("loaded");
 			}
 
+			// モーダルビュー内のリストをクリックした際の処理
 			function genreClickFunction() {
 				$('#grumetModal li').click(function(){
 					var data = $(this).text();
-					console.log(data)
 					extractionGenre(data)
 				});
+				return 0;
 			}
 
+			// カテゴリーごとに分ける
+			function separateCategory(data, category) {
+				var categoryData = new Array();
+				for (let i = 0; i < data.length; i++) {
+					if (data[i]["category"] === category) {
+						categoryData.push(data[i]);
+					}
+				}
+				return categoryData;
+			}
 
 			// 重複しているジャンルを削除してモーダルウィンドウに追加
 			function removeGenreDuplication(data) {
 				var genreData = new Array();
-				for (let i = 0; i < data.length; i++) {
-					genreData.push(data[i]['genre']);
+				var cloneData = Object.create(data);
+				for (let i = 0; i < cloneData.length; i++) {
+					var genreRow = cloneData[i]['genre'];
+					var words = (String(genreRow)).split(',');
+					for (let j = 0; j < words.length; j++) {
+						genreData.push(words[j]);
+					}
+					data[i]['genre'] = words;
 				}
-				var genreList = genreData.filter(function (x, i, self) {
-					return self.indexOf(x) === i
-				});
+				var genreList = Array.from(new Set(genreData));
 				return genreList;
 			}
 
 			// ジャンルごとに抽出
 			function extractionGenre(genre) {
 				let grumetClassify = shopData.filter(function(value) {
-					return value["genre"] === genre;
+					for (let i = 0; i < value['genre'].length; i++) {
+						if ((value["genre"][i] === genre) === true) {
+							return true;
+						}
+					}
 				});
-				console.log("result", grumetClassify);
 				clickModalItem(grumetClassify);
 				return grumetClassify;
 			}
 
-			function setGenreModal(state) {
+			function setGenreModal(category) {
+				var categoryData = separateCategory(shopData, category);
 				var grumetModal = document.getElementById('grumetModal');
 				var liItem = '';
-				var genreList = removeGenreDuplication(shopData)
-				console.log(genreList)
+				var genreList = removeGenreDuplication(categoryData);
 				for (let i = 0; i < genreList.length; i++) {
 					liItem += '<li class="list-group-item">' + genreList[i] + '</li>';
 				}
 				grumetModal.innerHTML = liItem;
 				genreClickFunction();
+				return 0;
 			}
 
 			function clickModalItem(data) {
 				var grumetModal = document.getElementById('grumetModal');
 				var liItem = "";
-				console.log("modal", data);
 				for (let i = 0; i < data.length; i++) {
 					liItem += '<a href=' + data[i].url + '><li class="list-group-item">' + data[i].name + '</li>';
 				}
 				grumetModal.innerHTML = liItem;
+				return 0;
 			}
 		</script>
 	</head>
@@ -125,13 +144,13 @@
                     <div class="search-icon">
                         <!-- <a href="./search.html"><img src="./images/shop_genre.png" style="width: 50%;"></a>
 						<p><span class="search-sub">グルメ</span>から探す</p> -->
-						<div class="section-top font-weight-bold" data-toggle="modal" data-target="#current-location" onclick="setGenreModal()">
+						<div class="section-top font-weight-bold" data-toggle="modal" data-target="#current-location" onclick="setGenreModal('飲食')">
 							<img src="./images/genre_grumet.png" class="img-fluid">
 							<p><span class="search-sub">グルメ</span>から探す</p>
 						</div>
                     </div>
                     <div class="search-icon">
-                        <img src="./images/genre_beauty.png" style="width: 50%;" data-toggle="modal" data-target="#current-location">
+                        <img src="./images/genre_beauty.png" style="width: 50%;" data-toggle="modal" data-target="#current-location" onclick="setGenreModal('美容')">
                         <p><span class="search-sub">美容</span>から探す</p>
                     </div>
                 </div>
