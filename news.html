@@ -10,6 +10,42 @@
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="./js/sidebar.js"></script>
+		<script src="https://unpkg.com/stein-expedite@0.0.1/dist/index.js"></script>
+		<script src="https://unpkg.com/stein-js-client"></script>
+		<!-- <script src="./js/stein.js"></script> -->
+		<!-- <script>
+			window.addEventListener('load', init);
+			function init() {
+				const store = new SteinStore(
+					"https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
+				);
+				var element = new Array();
+
+				store.read("news").then(data => {
+					var loadData = new Array();
+					for (let i = 0; i < data.length; i++) {
+						loadData.push(data[i]);
+					}
+					setSteinItem(loadData);
+				});
+				return 0;
+			}
+
+			function setSteinItem(data) {
+				var steinItem = document.getElementById("stein-item");
+				console.log(steinItem)
+				for (let i = 0; i < data.length; i++) {
+					var content =
+						'<div class="stein-item"> \
+							<a href=' + data[i].link + ' class="d-flex flex-row">\
+								<h3 class="p-2 bd-highlight">' + data[i].title + '</h3>\
+									<img style="width: 30%;" class="p-2 bd-highlight" src=' + data[i].image + '>\
+							</a>\
+						</div>'
+					steinItem.innerHTML += content;
+				}
+			}
+		</script> -->
 		<!-- CSS only -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 		<!-- JS, Popper.js, and jQuery -->
@@ -50,6 +86,64 @@
 					<h3>新着情報</h3>
 				</div>
 
+				<br/>
+
+				<div class="stein-container">
+					<div id="stein-item">
+						<div class="stein-item">
+							<a href="https://www.google.com/search?q=javascript+split+%E3%82%A8%E3%83%A9%E3%83%BC&oq=javascript+split+&aqs=chrome.5.69i57j0l6j69i60.8705j0j7&sourceid=chrome&ie=UTF-8" class="d-flex flex-row">
+								<p class="p-2 bd-highlight">サイゼリヤ白岡店が<br/>利用可能になりました！</p>
+								<img class="p-2 bd-highlight" src="./images/genre_beauty.png">
+							</a>
+						</div>
+						<div class="stein-item">
+							<a href="https://www.google.com/search?q=javascript+split+%E3%82%A8%E3%83%A9%E3%83%BC&oq=javascript+split+&aqs=chrome.5.69i57j0l6j69i60.8705j0j7&sourceid=chrome&ie=UTF-8" class="d-flex flex-row">
+								<p class="p-2 bd-highlight">サイゼリヤ白岡店ホゲホゲホゲホゲffffffffffffffffffffffffffffffが<br/>利用可能になりました！</p>
+								<img class="p-2 bd-highlight" src="./images/genre_beauty.png">
+							</a>
+						</div>
+						<div class="stein-item">
+							<a href="https://www.google.com/search?q=javascript+split+%E3%82%A8%E3%83%A9%E3%83%BC&oq=javascript+split+&aqs=chrome.5.69i57j0l6j69i60.8705j0j7&sourceid=chrome&ie=UTF-8" class="d-flex flex-row">
+								<p class="p-2 bd-highlight">サイゼリヤ白岡店ホゲホゲホゲホゲffffffffffffffffffffffffffffffが<br/>利用可能になりました！</p>
+								<img class="p-2 bd-highlight" src="./images/genre_beauty.png">
+							</a>
+						</div>
+
+					</div>
+				</div>
+
+				<style>
+					.stein-container {
+						position: relative;
+						/* height: 300px; */
+					}
+
+					.stein-item {
+						align-self: center;
+						padding: 0.5em 1em;
+						font-weight: bold;
+						color: #6091d3;/*文字色*/
+						background: #FFF;
+						border: solid 3px #6091d3;/*線*/
+						border-radius: 10px;/*角の丸み*/
+						font-size: 15px;
+						vertical-align:middle;
+						width: 95%;
+						top: 0;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						margin: auto;
+						margin-bottom: 10px;
+						height: 100px;
+					}
+
+					.stein-item img {
+						position:fixed;
+						right: 15px;
+						height: 80px;
+					}
+				</style>
 
 			</section>
 		</div><!-- /#main-in -->

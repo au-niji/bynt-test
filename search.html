@@ -5,8 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 		<title>株式会社バイント</title>
-        <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <link rel="stylesheet" type="text/css" href="./css/shop.css">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/home.css">
+
+        <!-- <link rel="stylesheet" type="text/css" href="./css/shop.css"> -->
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="./js/sidebar.js"></script>
@@ -18,6 +20,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="./css/terms.css">
 		<script src="https://unpkg.com/stein-js-client"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
 		<script>
 			window.addEventListener('load', init);
 			var shopData = new Array();
@@ -137,23 +140,58 @@
 			<section class="section">
                 <div class="terms-content">
                         <div class="title">
-                            <p class="h1 pc_area">ジャンルで探す</p>
+                            <h3>ジャンルで探す</h3>
                         </div>
                 </div>
                 <div class="search-wrapper">
-                    <div class="search-icon">
-                        <!-- <a href="./search.html"><img src="./images/shop_genre.png" style="width: 50%;"></a>
-						<p><span class="search-sub">グルメ</span>から探す</p> -->
-						<div class="section-top font-weight-bold" data-toggle="modal" data-target="#current-location" onclick="setGenreModal('飲食')">
-							<img src="./images/genre_grumet.png" class="img-fluid">
-							<p><span class="search-sub">グルメ</span>から探す</p>
-						</div>
+                    <div class="search-icon" data-toggle="modal" data-target="#current-location" onclick="setGenreModal('飲食')">
+						<img src="./images/genre_grumet.png" class="img-fluid">
+						<p><span class="search-sub font-weight-bold">グルメ</span><br/>から探す</p>
                     </div>
-                    <div class="search-icon">
-                        <img src="./images/genre_beauty.png" style="width: 50%;" data-toggle="modal" data-target="#current-location" onclick="setGenreModal('美容')">
-                        <p><span class="search-sub">美容</span>から探す</p>
+                    <div class="search-icon" data-toggle="modal" data-target="#current-location" onclick="setGenreModal('美容')">
+                        <img src="./images/genre_beauty.png" class="img-fluid">
+                        <p><span class="search-sub font-weight-bold">美容</span><br/>から探す</p>
                     </div>
-                </div>
+				</div>
+				<style>
+					.search-wrapper {
+						text-align: center;
+						display: flex;
+						justify-content: center;
+						position: relative;
+						/* justify-content: space-around; */
+						align-items: flex-end;
+						position: relative;
+					}
+
+					.search-icon {
+						position: relative;
+					}
+
+					span {
+						font-size: 30px;
+					}
+					.search-icon p {
+						position: absolute;
+						top: 60%;
+						left: 50%;
+						-ms-transform: translate(-50%,-50%);
+						-webkit-transform: translate(-50%,-50%);
+						transform: translate(-50%,-50%);
+						margin:0;
+						padding:0;
+						color: #FFFFFF;
+						/*文字の装飾は省略*/
+					}
+
+					.search-icon img {
+						width: 50%;
+					}
+
+					.search-sub {
+						font-family: 'Montserrat', sans-serif;
+					}
+				</style>
 			</section>
 		</div><!-- /#main-in -->
 	</main>
@@ -170,26 +208,6 @@
 			<div class="modal-body">
 				<ul class="list-group" style="max-width: 400px;" id="grumetModal">
 					<li class="list-group-item">読み込み中...</li>
-				</ul>
-			</div>
-		</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-
-	<!-- モーダルの設定 -->
-	<div class="modal fade" id="category-list" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-		<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			</div>
-			<div class="modal-body">
-				<ul class="list-group" style="max-width: 400px;">
-					<li class="list-group-item">リスト1</li>
-					<li class="list-group-item">リスト2</li>
-					<li class="list-group-item">リスト3</li>
 				</ul>
 			</div>
 		</div><!-- /.modal-content -->
