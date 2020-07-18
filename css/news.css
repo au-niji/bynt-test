@@ -1,0 +1,43 @@
+.day {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    font-size: 7px;
+    opacity: 30%;
+    color: #333333;
+}
+
+.shop-name {
+    margin: 0 0 0 0;
+}
+
+.stein-container {
+    width: 95%;
+    margin: 0 0 0 0;
+}
+
+a:visited {
+    color: black;
+}
+
+.stein-item {
+    align-self: center;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    color: black;/*文字色*/
+    border-bottom: solid 1px gray;
+    border-radius: 3px;
+    font-size: 12px;
+    top: 0;
+    bottom: 0;
+    margin: 0 0 0 0;
+    margin-bottom: 10px;
+}
+
+.stein-item img {
+    position: absolute;
+    right: 0;
+    height: auto;
+    width: 10em;
+    top: -5px;
+}
