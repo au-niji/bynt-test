@@ -22,21 +22,22 @@ async function setSpecialContets(data) {
 // DBからGoogle Map用のデータを取得
 async function readSpreadSheetMapData() {
     const store = new SteinStore(
-        "https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
+        "https://api.steinhq.com/v1/storages/5f133f9e5d3cdc44fcd7d1b1"
     );
     var element = new Array();
-    await store.read("test", { limit: 100, offset: 0 }).then(data => {
+    await store.read("store", { offset: 0 }).then(data => {
         for (let i = 0; i < data.length; i++) {
             element.push(data[i]);
         }
     });
-    store.read("special", { limit: 100, offset: 0 }).then(data => {
+    store.read("pickup", { offset: 0 }).then(data => {
         var specialData = new Array();
         for (let i = 0; i < data.length; i++) {
-                specialData.push(data[i]);
+            specialData.push(data[i]);
         }
         setSpecialContets(specialData);
     });
+    console.log("loaded");
     return element
 }
 var map;

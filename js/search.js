@@ -4,10 +4,10 @@ var genreList = new Array();
 
 async function init() {
     const store = new SteinStore(
-        "https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
+        "https://api.steinhq.com/v1/storages/5f133f9e5d3cdc44fcd7d1b1"
     );
 
-    await store.read("test", { offset: 0 }).then(data => {
+    await store.read("store", { offset: 0 }).then(data => {
         shopData = data;
     });
     console.log("loaded");

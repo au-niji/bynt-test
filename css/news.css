@@ -24,7 +24,7 @@ a:visited {
     align-self: center;
     padding: 0.5em 1em;
     font-weight: bold;
-    color: black;/*文字色*/
+    color: black;
     border-bottom: solid 1px gray;
     border-radius: 3px;
     font-size: 12px;
@@ -37,7 +37,7 @@ a:visited {
 .stein-item img {
     position: absolute;
     right: 0;
-    height: auto;
-    width: 10em;
+    height: 7.5em;
+    width: 8em;
     top: -5px;
 }

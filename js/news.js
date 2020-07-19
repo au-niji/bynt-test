@@ -1,9 +1,8 @@
 window.addEventListener('load', init);
 function init() {
     const store = new SteinStore(
-        "https://api.steinhq.com/v1/storages/5efa0b1083c30d0425e2c586"
+        "https://api.steinhq.com/v1/storages/5f133f9e5d3cdc44fcd7d1b1"
     );
-    var element = new Array();
 
     store.read("news").then(data => {
         var loadData = new Array();
@@ -17,7 +16,6 @@ function init() {
 
 function setSteinItem(data) {
     var steinItem = document.getElementById("stein-item");
-    console.log(steinItem)
     for (let i = 0; i < data.length; i++) {
         var content =
             '<div class="col-lg-6 col-xl-4 stein-item"> \
