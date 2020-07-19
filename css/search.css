@@ -1,0 +1,37 @@
+.search-wrapper {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* justify-content: space-around; */
+    align-items: flex-end;
+    position: relative;
+}
+
+.search-icon {
+    position: relative;
+}
+
+span {
+    font-size: 30px;
+}
+.search-icon p {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+    color: #FFFFFF;
+    /*文字の装飾は省略*/
+}
+
+.search-icon img {
+    width: 100%;
+}
+
+.search-sub {
+    font-family: 'Montserrat', sans-serif;
+}
