@@ -37,7 +37,8 @@ a:visited {
 .stein-item img {
     position: absolute;
     right: 0;
-    height: 7.5em;
+    /* height: 6em; */
+    max-height: 6em;
     width: 8em;
     top: -5px;
 }
