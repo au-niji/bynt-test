@@ -21,7 +21,7 @@ function setSteinItem(data) {
             '<div class="col-lg-6 col-xl-4 stein-item"> \
                 <a href=' + data[i].link + ' class="d-flex flex-row">\
                     <p class="day">' + data[i].day + '</p>\
-                    <p class="p-2 bd-highlight shop-name">' + data[i].title + '</p>\
+                    <p style="margin-left: -15px;" class="p-2 bd-highlight shop-name">' + data[i].title + '</p>\
                     <img class="p-2 bd-highlight img-fluid" src=' + data[i].image + '>\
                 </a>\
             </div>'

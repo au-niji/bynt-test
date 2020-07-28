@@ -22,7 +22,7 @@ h1 {
     display: inline-block;
     padding: 0.5em 1em;
     font-weight: bold;
-    background: #FFFFE0;
+    background: #faf8f5;
     border: solid 1.5px #EEEEEE;
     border-radius: 10px;
     margin: 5px;
@@ -39,6 +39,11 @@ h1 {
 .search-sub {
     font-size: 19px;
     font-weight: bold;
+}
+
+h4 {
+    margin-left: 2%;
+    font-size: 17px;
 }
 
 /* 特集 */

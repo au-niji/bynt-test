@@ -2,17 +2,12 @@
     position: absolute;
     top: -5px;
     left: 0;
-    font-size: 7px;
+    font-size: 9px;
     opacity: 30%;
     color: #333333;
 }
 
-.shop-name {
-    margin: 0 0 0 0;
-}
-
 .stein-container {
-    width: 95%;
     margin: 0 0 0 0;
 }
 
@@ -30,14 +25,17 @@ a:visited {
     font-size: 12px;
     top: 0;
     bottom: 0;
-    margin: 0 0 0 0;
     margin-bottom: 10px;
+}
+
+.stein-item .shop-name {
+    margin-left: 0px;
+    padding-left: 0px;
 }
 
 .stein-item img {
     position: absolute;
     right: 0;
-    /* height: 6em; */
     max-height: 6em;
     width: 8em;
     top: -5px;
