@@ -11,10 +11,8 @@ h1 {
     display: flex;
     justify-content: center;
     position: relative;
-    /* justify-content: space-around; */
     align-items: flex-end;
     position: relative;
-    /* max-height: 30px; */
 }
 
 .search-icon {
