@@ -16,6 +16,10 @@ h5 {
     font-weight: bold;
 }
 
+.right {
+    text-align: right;
+}
+
 @media screen and (max-width: 768px) {
     .pc_area{
         display:none;
