@@ -136,11 +136,13 @@ span {
     font-size: 20px;
 }
 
-#check {
+.check {
     transition: opacity 0.3s;
-    color: #FFCC33;
+    transition: color 0.3s;
+    color: red;
 }
 
-#check:hover {
+.check:hover {
     opacity: 50%;
+    color: #FFCC33;
 }
