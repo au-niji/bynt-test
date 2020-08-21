@@ -25,14 +25,14 @@ p {
 @media screen and (max-width: 900px) {
     .section-top p {
         position: absolute;
-        top: 60%;
-        left: 45%;
+        top: 50%;
+        left: 50%;
         -ms-transform: translate(-50%,-50%);
         -webkit-transform: translate(-50%,-50%);
         transform: translate(-50%,-50%);
         margin:0;
         padding:0;
-        font-size: 1.55rem;
+        font-size: 1.70rem;
         white-space: nowrap;
         color: #FFFFFF;
         text-align: left;
@@ -44,17 +44,18 @@ p {
         display: block;
         margin-right: auto;
         margin-left: auto;
-        font-size: 1.25rem;
-        bottom: 5.5rem;
+        font-size: 1rem;
+        bottom: 1rem;
         width: 100%;
         font-weight: 700;
+        color: #FFFFFF;
     }
 }
 
 @media screen and (min-width: 900px) {
     .section-top p {
         position: absolute;
-        top: 65%;
+        top: 40%;
         left: 300px;
         -ms-transform: translate(-50%,-50%);
         -webkit-transform: translate(-50%,-50%);
@@ -74,9 +75,10 @@ p {
         margin-right: auto;
         margin-left: auto;
         font-size: 1.5rem;
-        bottom: 1.5rem;
+        bottom: 1rem;
         width: 100%;
         font-weight: 700;
+        color: #FFFFFF;
     }
 }
 
@@ -140,6 +142,7 @@ span {
     transition: opacity 0.3s;
     transition: color 0.3s;
     color: red;
+    text-decoration: underline solid red;
 }
 
 .check:hover {
